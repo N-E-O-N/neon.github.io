@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<script>
+			var high = [];
+			var midle = [];
+			var low = [];
+			var sum = 0, n_high = 0, n_midle = 0, n_low = 0;
+			var fmark = false;
+			
+			function AddStudent(){
+				for(var i = 1; i < 6; i++){
+					var mark = document.getElementById('n'+i).value;
+					sum += parseInt(mark);
+					if(mark < 3){
+						fmark = true;
+					}
+				}
+				
+				var name = document.getElementById('name').value;
+				if(fmark == true){
+					n_low++;
+					low.push(name);
+				}
+				if(sum < 25 && fmark == false){
+					n_midle++;
+					midle.push(name);
+				}
+				if(sum == 25){
+					n_high++;
+					high.push(name);
+				}
+				fmark = false;
+				sum = 0;
+				document.getElementById('form1').reset();
+			}
+			
+			function ShowInfo(){
+				var info = "Отличники "+n_high+" : "+high+"\nХорошисты "+n_midle+" : "+midle+"\nНеуспевающие "+n_low+" : " + low;
+				alert(info);
+			}
+			
+			function RandMark(){
+				for(var i = 1; i < 6; i++){
+					document.getElementById('n'+i).value = Math.floor(Math.random() * 4) + 1;
+				}
+			}
+		</script>
+	</head>
+	
+	<body>
+		<form id="form1" method="post">
+			<p>
+				<b>Фамилия:</b>  
+				<input type="text" id="name" size="20">
+			</p>
+			<table>
+				<tr>
+					<td>Первая оценка:</td> 
+					<td><input type="number" id="n1" min="1" max="5"></td>
+				</tr>
+				<tr>
+					<td>Вторая оценка:</td>
+					<td><input type="number" id="n2" min="1" max="5"></td>
+				</tr>
+				<tr>
+					<td>Третья оценка:</td>
+					<td><input type="number" id="n3" min="1" max="5"></td>
+				</tr>
+				<tr>
+					<td>Четвертая оценка:</td>
+					<td><input type="number" id="n4" min="1" max="5"></td>
+				</tr>
+				<tr>
+					<td>Пятая оценка:</td>
+					<td><input type="number" id="n5" min="1" max="5"></td>
+				</tr>
+			</table>
+		</form>
+		<p><input type="button" value="Заполнить оценки" onclick="RandMark()"></p>
+		<p><input type="button" value="Добавить студента" onclick="AddStudent()"></p>
+		<p><input type="button" value="Вывести информацию" onclick="ShowInfo()"></p>
+	</body>
+</html>
