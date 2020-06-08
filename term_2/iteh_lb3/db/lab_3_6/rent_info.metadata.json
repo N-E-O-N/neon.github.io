@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"lab_3_6.rent_info"}],"uuid":"1fee0f5627624710a289f3f98415607f"}
